@@ -1,5 +1,6 @@
 <script setup>
 import TaskList from './component/TaskList.vue'
+import TaskForm from './component/TaskForm.vue'
 import { ref, computed } from 'vue'
 
 // Llista de tasques
@@ -12,7 +13,11 @@ const mostrarPendents = ref(false)
 
 // computed recalcula les tasques pendents quan canvia la llista
 const tasquesPendents = computed(() => {
-  return tasques.value.filter(tasca => !tasca.completada).length // 
+  return tasques.value.filter(tasca => !tasca.completada).length
+})
+
+const tasquesCompletades = computed(() => {
+  return tasques.value.filter(tasca => tasca.completada).length
 })
 
 // Si el filtre està activat, només mostra les tasques pendents
@@ -62,7 +67,7 @@ function eliminarTasca(id) {
   <TaskList :tasques="tasquesVisibles" @canviar-estat="canviarEstat" @eliminar="eliminarTasca"/>
 
     <section>
-      <p>Total: <b>{{ tasques.length }}</b> | Pendents <b>{{ tasquesPendents }}</b></p>
+      <p>Total: <b>{{ tasques.length }}</b> | Pendents: <b>{{ tasquesPendents }}</b> | Completades: <b>{{tasquesCompletades}}</b></p>
     </section>
   </main>
 </template>
