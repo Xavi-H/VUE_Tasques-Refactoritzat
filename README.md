@@ -1,4 +1,15 @@
-# vue-project
+# Jerarquia de components
+
+```
+App.vue
+├── TaskForm.vue          (formulari per afegir una tasca)
+└── TaskList.vue          (llista de tasques)
+    └── TaskItem.vue      (una tasca individual, repetit amb v-for)
+```
+
+`App.vue` és el component pare: guarda l'estat (`tasques`, `mostrarPendents`) i tota la lògica (afegir, canviar estat, eliminar, filtrar i comptadors). Els fills només mostren dades i avisen al pare amb events.
+
+## vue-project
 
 This template should help get you started developing with Vue 3 in Vite.
 
